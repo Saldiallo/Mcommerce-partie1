@@ -31,7 +31,6 @@ public class ProductController {
     //Récupérer la liste des produits
 
     @RequestMapping(value = "/Produits", method = RequestMethod.GET)
-
     public MappingJacksonValue listeProduits() {
 
         Iterable<Product> produits = productDao.findAll();
@@ -101,6 +100,11 @@ public class ProductController {
     public List<Product>  testeDeRequetes(@PathVariable int prix) {
 
         return productDao.chercherUnProduitCher(400);
+    }
+
+    @RequestMapping(value = "/Tri/Produits", method = RequestMethod.GET)
+    public List<Product> trierProduitsParOrdreAlphabetique(){
+        return productDao.findByProductOrderByNomDesc();
     }
 
 
